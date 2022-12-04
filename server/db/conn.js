@@ -1,4 +1,4 @@
-const { MongoClient } = require("mongodb");
+const { MongoClient } = require('mongodb');
 
 const Db = process.env.ATLAS_URI;
 
@@ -14,8 +14,8 @@ module.exports = {
     client.connect((err, db) => {
       // Verify we got a good "db" object
       if (db) {
-        _db = db.db("sideSpin");
-        console.log("Successfully connected to MongoDB.");
+        _db = db.db('sideSpin');
+        console.log('Successfully connected to MongoDB.');
       }
       return callback(err);
     });
