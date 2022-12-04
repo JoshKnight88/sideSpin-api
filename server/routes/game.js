@@ -4,7 +4,6 @@ const gameRoutes = express.Router();
 
 const dbo = require("../db/conn");
 
-const ObjectId = require("mongodb").ObjectId;
 
 gameRoutes.route("/games").get((req, res) => {
   let db_connect = dbo.getDb("sideSpin");
