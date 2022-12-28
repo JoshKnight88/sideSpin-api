@@ -53,11 +53,12 @@ playerRoutes.route('/update/:id').post((req, response) => {
   let newvalues = {
     $set: {
       name: req.body.name,
+      ranking: req.body.ranking,
     },
   };
   db_connect.collection('players').updateOne(myquery, newvalues, function (err, res) {
     if (err) throw err;
-    console.log('1 document updated');
+    console.log(`player ${req.body.name} has been updated`);
     response.json(res);
   });
 });

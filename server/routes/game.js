@@ -16,13 +16,12 @@ gameRoutes.route('/games').get((req, res) => {
 });
 
 gameRoutes.route('/game/add').post((req, response) => {
-  console.log({ req });
   let db_connect = dbo.getDb();
   let myobj = {
-    player1: req.body.player1,
-    score1: req.body.score1,
-    player2: req.body.player2,
-    score2: req.body.score2,
+    playerOne: req.body.playerOne,
+    scoreOne: req.body.scoreOne,
+    playerTwo: req.body.playerTwo,
+    scoreTwo: req.body.scoreTwo,
   };
   db_connect.collection('games').insertOne(myobj, (err, res) => {
     if (err) throw err;
