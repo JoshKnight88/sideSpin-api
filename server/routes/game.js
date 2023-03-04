@@ -22,7 +22,9 @@ gameRoutes.route('/game/add').post((req, response) => {
     scoreOne: req.body.scoreOne,
     playerTwo: req.body.playerTwo,
     scoreTwo: req.body.scoreTwo,
+    datePlayed: Date,
   };
+  
   db_connect.collection('games').insertOne(myobj, (err, res) => {
     if (err) throw err;
     response.json(res);

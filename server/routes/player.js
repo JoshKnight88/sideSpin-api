@@ -56,7 +56,7 @@ playerRoutes.route('/update/:id').post((req, response) => {
       ranking: req.body.ranking,
     },
   };
-  db_connect.collection('players').updateOne(myquery, newvalues, function (err, res) {
+  db_connect.collection('players').updateOne(myquery, newvalues, (err, res) => {
     if (err) throw err;
     console.log(`player ${req.body.name} has been updated`);
     response.json(res);
@@ -67,7 +67,7 @@ playerRoutes.route('/update/:id').post((req, response) => {
 playerRoutes.route('/:id').delete((req, response) => {
   let db_connect = dbo.getDb();
   let myquery = { _id: ObjectId(req.params.id) };
-  db_connect.collection('players').deleteOne(myquery, function (err, obj) {
+  db_connect.collection('players').deleteOne(myquery, (err, obj) => {
     if (err) throw err;
     console.log('1 document deleted');
     response.json(obj);
