@@ -35,6 +35,8 @@ playerRoutes.route('/player/:id').get((req, res) => {
 
 // This section will help you create a new record.
 playerRoutes.route('/player/add').post((req, response) => {
+  console.log('myobj');
+
   let db_connect = dbo.getDb();
   let myobj = {
     name: req.body.name,
