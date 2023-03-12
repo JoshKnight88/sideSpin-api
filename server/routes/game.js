@@ -22,6 +22,7 @@ gameRoutes.route('/game/add').post((req, response) => {
     scoreOne: req.body.scoreOne,
     playerTwo: req.body.playerTwo,
     scoreTwo: req.body.scoreTwo,
+    accessCode: req.body.accessCode,
     datePlayed: Date,
   };
   

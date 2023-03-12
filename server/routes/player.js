@@ -41,6 +41,7 @@ playerRoutes.route('/player/add').post((req, response) => {
   let myobj = {
     name: req.body.name,
     ranking: 400,
+    accessCode: req.body.accessCode,
   };
   db_connect.collection('players').insertOne(myobj, (err, res) => {
     if (err) throw err;
