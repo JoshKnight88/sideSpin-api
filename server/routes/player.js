@@ -81,7 +81,7 @@ playerRoutes.route('/:id').delete((req, response) => {
 
 playerRoutes.route('/codes/:id').get((req, res) => {
   let db_connect = dbo.getDb();
-  let leagueCode = req.query.id;
+  let leagueCode = req.params.id;
   db_connect
     .collection('players')
     .find({ accessCode: leagueCode })
