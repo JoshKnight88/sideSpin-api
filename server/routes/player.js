@@ -77,4 +77,18 @@ playerRoutes.route('/:id').delete((req, response) => {
   });
 });
 
+//This section will help you find all players with the same access code
+
+playerRoutes.route('/codes/:id').get((req, res) => {
+  let db_connect = dbo.getDb();
+  let leagueCode = req.query.id;
+  db_connect
+    .collection('players')
+    .find({ accessCode: leagueCode })
+    .toArray((err, result) => {
+      if (err) throw err;
+      res.json(result);
+    });
+});
+
 module.exports = playerRoutes;
