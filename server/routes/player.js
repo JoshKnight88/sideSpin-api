@@ -80,8 +80,8 @@ playerRoutes.route('/:id').delete((req, response) => {
 //This section will help you find all players with the same access code
 
 playerRoutes.route('/codes/:id').get((req, res) => {
-  let db_connect = dbo.getDb();
-  let leagueCode = req.params.id;
+  let db_connect = dbo.getDb('sideSpin');
+  let leagueCode = req.query.id;
   db_connect
     .collection('players')
     .find({ accessCode: leagueCode })
