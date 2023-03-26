@@ -84,13 +84,7 @@ playerRoutes.route('/codes/:id').get((req, res) => {
   let leagueCode = req.query.id;
   db_connect
     .collection('players')
-    .aggregate([
-      {
-        $match: {
-          accessCode: leagueCode,
-        },
-      },
-    ])
+    .find({ accessCode: leagueCode })
     .toArray((err, result) => {
       if (err) throw err;
       res.json(result);
