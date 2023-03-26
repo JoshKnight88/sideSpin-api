@@ -87,7 +87,7 @@ playerRoutes.route('/codes/:id').get((req, res) => {
     .aggregate([
       {
         $match: {
-          accessCode: leagueCode,
+          accessCode: 'leagueCode'
         },
       },
     ])
