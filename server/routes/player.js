@@ -95,14 +95,19 @@ playerRoutes.route('/players/default').get((req, res) => {
   let db_connect = dbo.getDb('sideSpin');
   db_connect
     .collection('players')
-    .find({'name': Fiver}, {'name': Bigwig})
-  // name: {
-  //       'Fiver', 'Bigwig', 'Blackberry', 'Dandelion', 'Hazel'
-  //     },
-  //   }
-
-
-  //   )
+    .aggregate([
+      {
+        $match: {
+          $or: [
+            { name: 'Fiver' },
+            { name: 'Bigwig' },
+            { name: 'Blackberry' },
+            { name: 'Dandelion' },
+            { name: 'Hazel' },
+          ],
+        },
+      },
+    ])
     .toArray((err, result) => {
       if (err) throw err;
       res.json(result);
