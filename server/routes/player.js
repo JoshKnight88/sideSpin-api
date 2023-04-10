@@ -82,6 +82,7 @@ playerRoutes.route('/:id').delete((req, response) => {
 playerRoutes.route('/codes/:id').get((req, res) => {
   let db_connect = dbo.getDb('sideSpin');
   let leagueCode = req.query.id;
+  console.log(req.query)
   db_connect
     .collection('players')
     .aggregate([
