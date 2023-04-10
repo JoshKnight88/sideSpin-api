@@ -27,8 +27,17 @@ leagueRoutes.route('/league/add').post((req, response) => {
 
   db_connect.collection('leagues').insertOne(myobj, (err, res) => {
     if (err) throw err;
-    console.log(err)
+    console.log(err);
     response.json(res);
+  });
+});
+
+leagueRoutes.route('/league/:id').get((req, res) => {
+  let db_connect = dbo.getDb();
+  let league = req.query.id;
+  db_connect.collection('leagues').findOne(league, (err, result) => {
+    if (err) throw err;
+    res.json(result);
   });
 });
 
