@@ -42,6 +42,7 @@ playerRoutes.route('/player/add').post((req, response) => {
     name: req.body.name,
     ranking: 400,
     accessCode: req.body.accessCode,
+    leagueName: req.body.leagueName,
   };
   db_connect.collection('players').insertOne(myobj, (err, res) => {
     if (err) throw err;
@@ -78,11 +79,10 @@ playerRoutes.route('/:id').delete((req, response) => {
 });
 
 //This section will help you find all players with the same access code
-
+//potentially
 playerRoutes.route('/codes/:id').get((req, res) => {
   let db_connect = dbo.getDb('sideSpin');
-  let leagueCode = req.query.id;
-  console.log({ query: req.query });
+  let leagueCode = req.params.id;
   db_connect
     .collection('players')
     .aggregate([
