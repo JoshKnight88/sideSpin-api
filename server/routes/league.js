@@ -34,7 +34,7 @@ leagueRoutes.route('/league/add').post((req, response) => {
 
 leagueRoutes.route('/league/:id').get((req, res) => {
   let db_connect = dbo.getDb('sideSpin');
-  let league = {accessCode: req.params.id};
+  let league = { accessCode: req.params.id };
   db_connect.collection('leagues').findOne(league, (err, result) => {
     if (err) throw err;
     res.json(result);
