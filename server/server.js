@@ -9,7 +9,7 @@ app.use(cors());
 app.use(express.json());
 app.use(require('./routes/player'));
 app.use(require('./routes/game'));
-app.use(require('./routes/league'))
+app.use(require('./routes/league'));
 // get driver connection
 const dbo = require('./db/conn');
 
