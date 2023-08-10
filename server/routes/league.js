@@ -40,4 +40,13 @@ leagueRoutes.route('/league/:id').get((req, res) => {
   });
 });
 
+leagueRoutes.route('/league/findCode/:id').get((req, res) => {
+  let db_connect = dbo.getDb('sideSpin');
+  let league = { leagueName: req.params.id };
+  db_connect.collection('leagues').findOne(league, (err, result) => {
+    if (err) throw err;
+    res.json(result);
+  });
+});
+
 module.exports = leagueRoutes;

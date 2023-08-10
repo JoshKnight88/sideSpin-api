@@ -17,8 +17,7 @@ gameRoutes.route('/games').get((req, res) => {
 
 gameRoutes.route('/game/add').post((req, response) => {
   let newDate = new Date();
-  let FormattedDate = newDate.toLocaleDateString('en-UK');
-
+  let formattedDate = newDate.toLocaleDateString('en-UK');
   let db_connect = dbo.getDb();
   let myobj = {
     playerOne: req.body.playerOne,
@@ -26,7 +25,7 @@ gameRoutes.route('/game/add').post((req, response) => {
     playerTwo: req.body.playerTwo,
     scoreTwo: req.body.scoreTwo,
     accessCode: req.body.accessCode,
-    date: FormattedDate,
+    date: formattedDate,
   };
 
   db_connect.collection('games').insertOne(myobj, (err, res) => {
